@@ -1,3 +1,4 @@
+import random
 import pygame
 import sys
 from enemy import spawn_enemy, move_enemies, draw_enemies, check_collision, clear_offscreen_enemies
@@ -55,8 +56,9 @@ class Game:
 
         # Generar enemigos a intervalos regulares
         self.enemy_spawn_timer += 1
-        if self.enemy_spawn_timer >= 120:  # Generar un enemigo cada segundo
-            spawn_enemy()
+        if self.enemy_spawn_timer >= 90:  # Generar enemigos cada ... segundos
+            for _ in range(random.randint(1, 2)):  # Generar entre uno y dos enemigos
+                spawn_enemy()
             self.enemy_spawn_timer = 0
 
     def draw(self):
