@@ -1,7 +1,7 @@
-import random
 import pygame
 import sys
-from enemy import spawn_enemy, move_enemies, draw_enemies, check_collision, clear_offscreen_enemies
+import random
+from enemy import spawn_enemy, move_enemies, draw_enemies, check_collision, clear_offscreen_enemies, enemies
 
 # Configuración de la pantalla
 SCREEN_WIDTH = 422
@@ -38,6 +38,9 @@ class Game:
         self.player = Player()
         self.enemy_spawn_timer = 0  # Temporizador para generar enemigos
         self.running = True
+        self.start_time = pygame.time.get_ticks()  # Tiempo de inicio del juego
+        self.score = 0
+        enemies.clear()  # Limpiar la lista de enemigos
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -50,16 +53,17 @@ class Game:
         clear_offscreen_enemies()
 
         if check_collision(self.player.rect):
-            print("Game Over!")
-            pygame.quit()
-            sys.exit()
+            self.running = False
 
         # Generar enemigos a intervalos regulares
         self.enemy_spawn_timer += 1
-        if self.enemy_spawn_timer >= 90:  # Generar enemigos cada ... segundos
+        if self.enemy_spawn_timer >= 120:  # Generar enemigos cada dos segundos
             for _ in range(random.randint(1, 2)):  # Generar entre uno y dos enemigos
                 spawn_enemy()
             self.enemy_spawn_timer = 0
+
+        # Actualizar la puntuación
+        self.score = (pygame.time.get_ticks() - self.start_time) // 1000
 
     def draw(self):
         self.screen.fill(WHITE)
@@ -68,24 +72,33 @@ class Game:
         self.player.draw(self.screen)
         draw_enemies(self.screen)
 
+        # Mostrar la puntuación
+        font = pygame.font.Font(None, 36)
+        score_text = font.render(f"Score: {self.score}", True, BLACK)
+        self.screen.blit(score_text, (10, 10))
+
     def game_over(self):
+        # Cargar la imagen de fondo de Game Over
+        gameover_img = pygame.image.load('retro-car-racing/images/gameover.png').convert()
+        self.screen.blit(gameover_img, (0, 0))
+
+        # Mostrar el texto de Game Over y la puntuación
         font = pygame.font.Font(None, 74)
-        text = font.render("Game Over", True, BLACK)
-        self.screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, SCREEN_HEIGHT // 2 - text.get_height() // 2))
+        game_over_text = font.render("Game Over", True, WHITE)
+        self.screen.blit(game_over_text, (self.screen.get_width() // 2 - game_over_text.get_width() // 2, 100))
 
         font = pygame.font.Font(None, 36)
-        retry_text = font.render("Press R to Retry", True, BLACK)
-        self.screen.blit(retry_text, (SCREEN_WIDTH // 2 - retry_text.get_width() // 2, SCREEN_HEIGHT // 2 + text.get_height()))
+        score_text = font.render(f"Tu puntuación fue: {self.score}", True, WHITE)
+        self.screen.blit(score_text, (self.screen.get_width() // 2 - score_text.get_width() // 2, 200))
 
         pygame.display.flip()
 
+        # Esperar a que el usuario cierre el juego
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
-                    return
 
 def main():
     pygame.init()
@@ -106,7 +119,6 @@ def main():
             game.clock.tick(FPS)
 
         game.game_over()
-        game.__init__(screen)  # Reiniciar el juego
 
 if __name__ == "__main__":
     main()
