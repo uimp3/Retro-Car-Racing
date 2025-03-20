@@ -14,13 +14,13 @@ BLACK = (0, 0, 0)
 
 # Carriles
 LANE_WIDTH = 95
-LANE_LEFT = 80
-LANE_RIGHT = 265
+LANE_LEFT = 85
+LANE_RIGHT = 275
 
 # Clase del jugador
 class Player:
-    def __init__(self):
-        self.image = pygame.image.load("retro-car-racing/images/mycar.png")
+    def __init__(self, car_image):
+        self.image = car_image
         self.width = self.image.get_width()
         self.height = self.image.get_height()
         self.x = SCREEN_WIDTH // 2 - self.width // 2
@@ -38,10 +38,10 @@ class Player:
 
 # Clase del juego
 class Game:
-    def __init__(self, screen):
+    def __init__(self, screen, car_image):
         self.screen = screen
         self.clock = pygame.time.Clock()
-        self.player = Player()
+        self.player = Player(car_image)
         self.enemy_spawn_timer = 0  # Temporizador para generar enemigos
         self.running = True
         self.start_time = pygame.time.get_ticks()  # Tiempo de inicio del juego
@@ -51,9 +51,9 @@ class Game:
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.player.move(-4)  # Reducir la velocidad del jugador
+            self.player.move(-3)  # Reducir la velocidad del jugador
         if keys[pygame.K_RIGHT]:
-            self.player.move(4)  # Reducir la velocidad del jugador
+            self.player.move(3)  # Reducir la velocidad del jugador
 
         move_enemies()
         clear_offscreen_enemies()
@@ -110,10 +110,23 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Retro Car Racing")
-    game = Game(screen)
-
+    
     while True:
-        while game.running:
+        show_menu(screen)
+        while True:
+            action = handle_menu_input()
+            if action == "start":
+                car_image = show_garage(screen)
+                if car_image:
+                    break
+            if action == "exit":
+                pygame.quit()
+                sys.exit()
+
+        clock = pygame.time.Clock()
+        game = Game(screen, car_image)
+
+        while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -122,9 +135,11 @@ def main():
             game.update()
             game.draw()
             pygame.display.flip()
-            game.clock.tick(FPS)
+            clock.tick(60)
 
-        game.game_over()
+            if not game.running:
+                game.game_over()
+                break
 
 if __name__ == "__main__":
     main()

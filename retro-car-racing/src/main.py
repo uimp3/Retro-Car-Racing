@@ -1,7 +1,7 @@
 import pygame
 import sys
 from game import Game
-from menu import show_menu, handle_menu_input
+from menu import show_menu, handle_menu_input, show_garage
 
 def main():
     pygame.init()
@@ -13,13 +13,15 @@ def main():
         while True:
             action = handle_menu_input()
             if action == "start":
-                break
+                car_image = show_garage(screen)
+                if car_image:
+                    break
             if action == "exit":
                 pygame.quit()
                 sys.exit()
 
         clock = pygame.time.Clock()
-        game = Game(screen)
+        game = Game(screen, car_image)
 
         while True:
             for event in pygame.event.get():
