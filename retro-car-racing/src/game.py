@@ -12,6 +12,11 @@ FPS = 60
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
+# Carriles
+LANE_WIDTH = 95
+LANE_LEFT = 80
+LANE_RIGHT = 265
+
 # Clase del jugador
 class Player:
     def __init__(self):
@@ -23,8 +28,9 @@ class Player:
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def move(self, dx):
-        if 0 <= self.x + dx <= SCREEN_WIDTH - self.width:
-            self.x += dx
+        new_x = self.x + dx
+        if LANE_LEFT <= new_x <= LANE_RIGHT:
+            self.x = new_x
             self.rect.x = self.x
 
     def draw(self, screen):
@@ -45,9 +51,9 @@ class Game:
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.player.move(-5)
+            self.player.move(-3)  # Reducir la velocidad del jugador
         if keys[pygame.K_RIGHT]:
-            self.player.move(5)
+            self.player.move(3)  # Reducir la velocidad del jugador
 
         move_enemies()
         clear_offscreen_enemies()
