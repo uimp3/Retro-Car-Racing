@@ -17,7 +17,7 @@ enemy_images = [
 # Generar autos enemigos
 def spawn_enemy():
     x = random.choice([90, 183, 274])  # Tres carriles
-    y = -2*enemy_height
+    y = -2 * enemy_height
     enemy_image = random.choice(enemy_images)
     enemy_rect = enemy_image.get_rect(topleft=(x, y))
     enemies.append((enemy_rect, enemy_image))

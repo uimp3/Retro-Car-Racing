@@ -34,7 +34,7 @@ class Player:
             self.rect.x = self.x
 
     def draw(self, screen):
-        screen.blit(self.image, (self.x, self.y))  # Dibujar la imagen del jugador
+        screen.blit(self.image, (self.x, self.y))  # Dibujar la imagen del auto jugador
 
 # Clase del juego
 class Game:
@@ -51,9 +51,9 @@ class Game:
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.player.move(-3.3)  # Reducir la velocidad del jugador
+            self.player.move(-3.3)  # Velocidad a la izquierda
         if keys[pygame.K_RIGHT]:
-            self.player.move(3.2)  # Reducir la velocidad del jugador
+            self.player.move(3.2)  # Velocidad a la derecha
 
         move_enemies()
         clear_offscreen_enemies()

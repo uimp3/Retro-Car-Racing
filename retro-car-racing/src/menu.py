@@ -5,9 +5,9 @@ def show_menu(screen):
     background_img = pygame.image.load('retro-car-racing/images/menubackground.png').convert()
     
     # Configurar el texto del menú
-    title_font = pygame.font.Font(None, 60)  # Tamaño de fuente más pequeño para el título
-    text_font = pygame.font.Font(None, 36)  # Tamaño de fuente más pequeño para el texto de inicio
-
+    title_font = pygame.font.Font(None, 60) 
+    text_font = pygame.font.Font(None, 36) 
+    
     title_text = title_font.render("Retro Car Racing", True, (255, 255, 255))
     start_text = text_font.render("Press ENTER to Start", True, (255, 255, 255))
 
@@ -45,16 +45,16 @@ def show_garage(screen):
         screen.blit(background_img, (0, 0))
         
         # Dibujar el texto de instrucciones
-        font = pygame.font.Font(None, 30)  # Tamaño de fuente más pequeño
-        instructions_text1 = font.render("Elija su auto con las flechas", True, (2, 0, 105))  # Amarillo oscuro
-        instructions_text2 = font.render("y presione ENTER para iniciar", True, (2, 0, 105))  # Amarillo oscuro
-        screen.blit(instructions_text1, (screen.get_width() // 2 - instructions_text1.get_width() // 2, 520))  # Más arriba
-        screen.blit(instructions_text2, (screen.get_width() // 2 - instructions_text2.get_width() // 2, 560))  # Más arriba
+        font = pygame.font.Font(None, 30) 
+        instructions_text1 = font.render("Elija su auto con las flechas", True, (2, 0, 105)) 
+        instructions_text2 = font.render("y presione ENTER para iniciar", True, (2, 0, 105)) 
+        screen.blit(instructions_text1, (screen.get_width() // 2 - instructions_text1.get_width() // 2, 520)) 
+        screen.blit(instructions_text2, (screen.get_width() // 2 - instructions_text2.get_width() // 2, 560)) 
         
-        # Dibujar las imágenes de los autos con mayor separación
+        # Dibujar las imágenes de los autos
         for i, car_image in enumerate(car_images):
             x = screen.get_width() // 2 - car_image.get_width() // 2
-            y = 15 + i * 170  # Incrementar el espacio vertical entre las imágenes
+            y = 15 + i * 170 
             screen.blit(car_image, (x, y))
             if i == selected_car:
                 pygame.draw.rect(screen, (255, 0, 0), (x - 5, y - 5, car_image.get_width() + 10, car_image.get_height() + 10), 3)

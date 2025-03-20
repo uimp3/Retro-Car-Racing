@@ -9,7 +9,10 @@ def main():
     pygame.display.set_caption("Retro Car Racing")
     
     while True:
+        # Mostrar el menú principal
         show_menu(screen)
+        
+        # Manejar la entrada del menú
         while True:
             action = handle_menu_input()
             if action == "start":
@@ -20,23 +23,24 @@ def main():
                 pygame.quit()
                 sys.exit()
 
+        # Iniciar el juego con el auto seleccionado
         clock = pygame.time.Clock()
         game = Game(screen, car_image)
 
-        while True:
+        # Bucle principal del juego
+        while game.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-gi
+
             game.update()
             game.draw()
             pygame.display.flip()
             clock.tick(60)
 
-            if not game.running:
-                game.game_over()
-                break
+        # Mostrar la pantalla de Game Over
+        game.game_over()
 
 if __name__ == "__main__":
     main()

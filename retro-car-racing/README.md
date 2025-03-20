@@ -1,40 +1,38 @@
-# Retro Car Racing Game
+# Juego de Carreras Retro
 
-## Description
-Retro Car Racing is a fun and engaging 2D car racing game built using Python and the PyGame library. Players navigate their car through three lanes while avoiding enemy cars that spawn from the top of the screen. The objective is to survive as long as possible without colliding with any enemies.
+## Descripción
+Retro Car Racing es un juego de carreras de autos 2D divertido y atractivo, creado con Python y la biblioteca PyGame. Los jugadores navegan su auto a través de tres carriles mientras evitan autos enemigos que aparecen desde la parte superior de la pantalla. El objetivo es sobrevivir el mayor tiempo posible sin chocar con ningún enemigo. El juego está inspirado en "Brick Game Classic Car Race" de la Atari Tetris.
 
-## Features
-- Three lanes for the player to navigate.
-- Enemy cars that spawn and move down the screen.
-- Collision detection between the player's car and enemy cars.
-- Simple and intuitive menu system for starting and exiting the game.
+## Características
+- Tres carriles para que el jugador navegue.
+- Autos enemigos que aparecen y se mueven hacia abajo en la pantalla.
+- Detección de colisiones entre el auto del jugador y los autos enemigos.
+- Sistema de menú simple e intuitivo para iniciar y salir del juego.
 
-## Installation
-To run this game, you need to have Python and PyGame installed on your machine. Follow these steps to set up the project:
+## Instalación
+Para ejecutar este juego, necesitas tener Python y PyGame instalados en tu máquina. Sigue estos pasos para configurar el proyecto:
 
-1. Clone the repository:
+1. Clona el repositorio:
    ```
-   git clone <repository-url>
+   git clone https://github.com/uimp3/Retro-Car-Racing.git
    cd retro-car-racing
    ```
 
-2. Install the required dependencies:
+2. Instala las dependencias requeridas:
    ```
    pip install -r requirements.txt
    ```
 
-## Running the Game
-To start the game, run the following command in your terminal:
+## Ejecutar el Juego
+Para iniciar el juego, ejecuta el siguiente comando en tu terminal:
 ```
 python src/main.py
 ```
 
-## Controls
-- Use the left and right arrow keys to move your car between lanes.
-- Avoid colliding with enemy cars.
+## Controles
+- Usa las teclas de flecha izquierda y derecha para mover tu auto entre los carriles.
+- Evita chocar con los autos enemigos.
 
-## Contributing
-If you'd like to contribute to the project, feel free to submit a pull request or open an issue for any bugs or feature requests.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+## Documentación y Referencias
+- [Documentación de PyGame](https://www.pygame.org/docs/)
+- [Tutoriales y Ejemplos de PyGame](https://www.pygame.org/wiki/tutorials)
