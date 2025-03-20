@@ -51,9 +51,9 @@ class Game:
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.player.move(-3)  # Reducir la velocidad del jugador
+            self.player.move(-3.3)  # Reducir la velocidad del jugador
         if keys[pygame.K_RIGHT]:
-            self.player.move(3)  # Reducir la velocidad del jugador
+            self.player.move(3.2)  # Reducir la velocidad del jugador
 
         move_enemies()
         clear_offscreen_enemies()

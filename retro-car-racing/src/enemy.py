@@ -4,7 +4,7 @@ import pygame
 # Configuración de los autos enemigos
 enemy_width = 50
 enemy_height = 80
-enemy_speed = 4
+enemy_speed = 5
 enemies = []
 
 # Cargar las imágenes de los autos enemigos

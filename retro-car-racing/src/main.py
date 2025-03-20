@@ -28,7 +28,7 @@ def main():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
+gi
             game.update()
             game.draw()
             pygame.display.flip()
