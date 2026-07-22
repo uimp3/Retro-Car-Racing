@@ -73,7 +73,7 @@ class Game:
 
     def draw(self):
         self.screen.fill(WHITE)
-        background_img = pygame.image.load('retro-car-racing/images/racetrack.png').convert()
+        background_img = pygame.image.load('images/racetrack.png').convert()
         self.screen.blit(background_img, (0, 0))
         self.player.draw(self.screen)
         draw_enemies(self.screen)
@@ -85,7 +85,7 @@ class Game:
 
     def game_over(self):
         # Cargar la imagen de fondo de Game Over
-        gameover_img = pygame.image.load('retro-car-racing/images/gameover.png').convert()
+        gameover_img = pygame.image.load('images/gameover.png').convert()
         self.screen.blit(gameover_img, (0, 0))
 
         # Mostrar el texto de Game Over y la puntuación

@@ -9,9 +9,9 @@ enemies = []
 
 # Cargar las imágenes de los autos enemigos
 enemy_images = [
-    pygame.image.load("retro-car-racing/images/car1.png"),
-    pygame.image.load("retro-car-racing/images/car2.png"),
-    pygame.image.load("retro-car-racing/images/car3.png")
+    pygame.image.load("images/car1.png"),
+    pygame.image.load("images/car2.png"),
+    pygame.image.load("images/car3.png")
 ]
 
 # Generar autos enemigos

@@ -2,7 +2,7 @@ import pygame
 
 def show_menu(screen):
     # Cargar la imagen de fondo del menú
-    background_img = pygame.image.load('retro-car-racing/images/menubackground.png').convert()
+    background_img = pygame.image.load('images/menubackground.png').convert()
     
     # Configurar el texto del menú
     title_font = pygame.font.Font(None, 60) 
@@ -30,13 +30,13 @@ def handle_menu_input():
 
 def show_garage(screen):
     # Cargar la imagen de fondo del garaje
-    background_img = pygame.image.load('retro-car-racing/images/garage.png').convert()
+    background_img = pygame.image.load('images/garage.png').convert()
     
     # Cargar las imágenes de los autos
     car_images = [
-        pygame.image.load('retro-car-racing/images/mycar.png'),
-        pygame.image.load('retro-car-racing/images/mycar1.png'),
-        pygame.image.load('retro-car-racing/images/mycar2.png')
+        pygame.image.load('images/mycar.png'),
+        pygame.image.load('images/mycar1.png'),
+        pygame.image.load('images/mycar2.png')
     ]
     
     selected_car = 0
